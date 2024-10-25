@@ -1,0 +1,58 @@
+import re
+
+
+
+
+# This script's responsible for executing small code snippets and determining the resulting program state based on the provided initial state and program code. It is the general script for a simple program statement (not loops or ifs, try etc)
+PROMPT = """
+You have been assigned the role of crossover assistant during genetic programming. You are assisting in the crossover between multiple parents. The goal is to create a child program that is a combination of the multiple parents. The parents are represented as a series of edits. The prosource file (code program or parameter file)  you are working is presented below to give you context.
+Your task is to select from the available parents the edits you think are the more beneficial to create a child program. The child program must be a combination of the edits from the available parents. The proposed edits must be a combination of the available edits. Your response must adhere to the text format: Proposed edits: **the edits you propose**.
+
+The source file:
+{program}
+and these are the available parents each with his fitness. The lowest fitness the better the parent.
+Available parents:
+{parents}
+Remember you are assisting in the crossover between the parents. Choose as many and whichever edits from the available parents you think will lead to the best child. The proposed edits must be a combination of the available edits.
+Your response must adhere to the text format: Proposed edits: **the edits you propose**. 
+"""
+
+
+# Extracts the postcondition from the model's response
+import re
+
+def extract_postcondition(s: str) -> str:
+    pattern = r"Postcondition:\s*\*\*(.*?)\*\*"
+    matches = re.findall(pattern, s, re.DOTALL)
+    if matches:
+        # Select the last match
+        res = matches[-1]
+        # Clean up the beginning and end of the string for any weird characters like * or newlines
+        return res.strip()
+    return s
+
+
+# Extracts the result from the model's response given a keyword . For example the keyword can be "Output State"
+# Same as extact_postcondition if the keyword is "Postcondition"
+def extract_result(s: str, keyword: str) -> str:
+    pattern = fr"{keyword}:\s*\*\*(.*?)\*\*"
+    matches = re.findall(pattern, s, re.DOTALL)
+    if matches:
+        # Select the last match
+        res = matches[-1]
+        # Clean up the beginning and end of the string for any weird characters like * or newlines
+        return res.strip()
+    return s
+
+
+
+# This is the main function, it completes the prompt, queries the model and extracts the result, meaining the output state of that program part
+def llm_crossover(parents, program, model):
+    prompt = PROMPT.format(parents=parents, program=program)
+    response = model.query(prompt)
+    post = extract_result(response, "Proposed edits")
+    print("*" * 50)
+    print(f"LLM post: {post}")
+    return post
+
+
