@@ -1,20 +1,20 @@
 import re
-
+import ast
 
 
 
 # This script's responsible for executing small code snippets and determining the resulting program state based on the provided initial state and program code. It is the general script for a simple program statement (not loops or ifs, try etc)
 PROMPT = """
 You have been assigned the role of crossover assistant during genetic programming. You are assisting in the crossover between multiple parents. The goal is to create a child program that is a combination of the multiple parents. The parents are represented as a series of edits. The prosource file (code program or parameter file)  you are working is presented below to give you context.
-Your task is to select from the available parents the edits you think are the more beneficial to create a child program. The child program must be a combination of the edits from the available parents. The proposed edits must be a combination of the available edits. Your response must adhere to the text format: Proposed edits: **the edits you propose**.
+Your task is to select from the available parents the edits you think are the more beneficial to create a child program. The child program must be a combination of the edits from the available parents. The child must be a combination of the available edits. Your response must adhere to the text format: Child: ***the child***.
 
 The source file:
 {program}
 and these are the available parents each with his fitness. The lowest fitness the better the parent.
 Available parents:
 {parents}
-Remember you are assisting in the crossover between the parents. Choose as many and whichever edits from the available parents you think will lead to the best child. The proposed edits must be a combination of the available edits.
-Your response must adhere to the text format: Proposed edits: **the edits you propose**. 
+Remember you are assisting in the crossover between the parents. Choose as many and whichever edits from the available parents you think will lead to the best child. The proposed edits must be a combination of the available edits. Respond back with the child in the form of a list of edits in the same format as the parents are.
+Your response must adhere to the text format: Child: ***the child***. 
 """
 
 
@@ -44,13 +44,28 @@ def extract_result(s: str, keyword: str) -> str:
         return res.strip()
     return s
 
+def extract_edits(edits_llm: str):
+    if '***' in edits_llm:
+        edits_llm = edits_llm[:edits_llm.rfind('***')]
+        #replace the *** with ''
+        edits_llm = edits_llm.replace('***', '')
+
+    if '[' in edits_llm:
+        # Format with brackets, we can parse directly as a list
+        edit_strings = ast.literal_eval(edits_llm.replace('Child: ', ''))
+    else:
+        # Format with hyphens, need to split by lines and remove hyphens
+        edit_lines = edits_llm.replace("Child:", "").strip().splitlines()
+        edit_strings = [line.strip("- ").strip() for line in edit_lines]
+    return edit_strings
+
 
 
 # This is the main function, it completes the prompt, queries the model and extracts the result, meaining the output state of that program part
 def llm_crossover(parents, program, model):
     prompt = PROMPT.format(parents=parents, program=program)
     response = model.query(prompt)
-    post = extract_result(response, "Proposed edits")
+    post = extract_edits(response)
     print("*" * 50)
     print(f"LLM post: {post}")
     return post

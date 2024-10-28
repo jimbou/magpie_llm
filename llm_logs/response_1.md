@@ -1,0 +1,1 @@
+Child: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]

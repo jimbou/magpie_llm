@@ -1,6 +1,7 @@
 import copy
 import math
 import random
+import ast
 
 import magpie.core
 import magpie.utils
@@ -64,7 +65,7 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
             # initial pop
             pop = {}
             local_best_fitness = None
-           
+
            
             # Write the original program to the file
            
@@ -106,8 +107,7 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
             original_program_info += f"Batch Bin Strategy: {original_program.batch_bin_fitness_strategy}\n"
 
             # Write the original program information to the file
-            with open("selected_parents_log.txt", "a") as file:
-                file.write("Original Program:\n")
+            with open("selected_parents_log.txt", "w") as file:
                 file.write(original_program_info)
                 file.write("\n-----\n")
 
@@ -191,7 +191,26 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                         model = get_model("gpt-3.5-turbo-0125",0.7 ,"/home/jim/magpie_llm/llm_logs")
                         response = llm_crossover(parents_string, original_program_info, model)
                         #print the response in the file
-                        file.write(f"Response: {response}\n")   
+                        file.write(f"Response: {response}\n")  
+
+                        #Convert each parsed edit string to an Edit object
+                        new_edits = []
+                        for edit_str in response:
+                            # Extract the class name and arguments using eval on the inner content
+                            class_name, args_str = edit_str.split("(", 1)
+                            edit_class = magpie.utils.edit_from_string(class_name)
+                            args = ast.literal_eval(f"({args_str[:-1]})")  # safely parse arguments
+
+                            # Create the Edit object and add to new_edits
+                            new_edits.append(edit_class(*args))
+                            sol = copy.deepcopy(random.sample(selected_parents, 1)[0])
+                
+                        #print the new edits not as objects but with their content      
+                        # Convert each edit to its string representation
+                        edits_pretty_str = [str(edit) for edit in new_edits] 
+                        # Replace the parent's edits with the new ones
+                        sol.edits = new_edits  # Assuming `edits` is the attribute holding edit objects
+                        offsprings.append(sol)
 
                 # crossover
                 copy_parents = copy.deepcopy(parents)
