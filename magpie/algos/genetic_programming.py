@@ -2,13 +2,14 @@ import copy
 import math
 import random
 import ast
-
+import magpie.settings
 import magpie.core
 import magpie.utils
 import os
 
 from .model import get_model
 from .llm_call import llm_crossover
+from.llm_call_2parents import llm_crossover_2parents
 
 
 class GeneticProgramming(magpie.core.BasicAlgorithm):
@@ -21,7 +22,8 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
         self.config['offspring_crossover'] = 0.5
         self.config['offspring_mutation'] = 0.4
         self.config['batch_reset'] = True
-
+        self.config["llm_multiple_parents"]= magpie.settings.llm_multiple_parents
+        self.config["llm_documentation_path"]= magpie.settings.llm_documentation_path
     def reset(self):
         super().reset()
         self.stats['gen'] = 0
@@ -189,7 +191,18 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                             parents_string += f"Parent {i+1} edits: {edits_str}\n"
                             file.write("-----\n")
                         model = get_model("gpt-3.5-turbo-0125",0.7 ,"/home/jim/magpie_llm/llm_logs")
-                        response = llm_crossover(parents_string, original_program_info, model)
+                        if self.config["llm_multiple_parents"]:
+                            if self.config["llm_documentation_path"] != "":
+                                documentation = open(self.config["llm_documentation_path"], "r").read()
+                                response = llm_crossover(parents_string, original_program_info, model, documentation=documentation)
+                            else:
+                                response = llm_crossover(parents_string, original_program_info, model)
+                        else:   
+                            if self.config["llm_documentation_path"] != "":
+                                documentation = open(self.config["llm_documentation_path"], "r").read()
+                                response = llm_crossover_2parents(parents_string, original_program_info, model, documentation=documentation)
+                            else:
+                                response = llm_crossover_2parents(parents_string, original_program_info, model)
                         #print the response in the file
                         file.write(f"Response: {response}\n")  
 

@@ -82,3 +82,10 @@ You can read the rest of the available documentation on how to invoke magpie and
 ```bash
 python3.11 magpie genetic_programming --scenario examples/minisat/_magpie/scenario_runtime_config1_time.txt 
 ```
+
+## New Scenario Parameters for LLM-Assisted Crossover
+Two new parameters have been introduced for the scenario file, allowing greater flexibility and control over the LLM-assisted crossover process:
+
+1. **llm_documentation_path:** This parameter specifies the path to a documentation file that provides additional context to the LLM during crossover operations. By default, this is set to None. If a file path is provided, the contents of the specified file will be included as part of the prompt, enriching the context for the LLM and potentially improving the quality of suggested edits. If left unset, the LLM operates without this additional documentation.
+
+2. **llm_multiple_parents:** This boolean parameter (default: True) controls how many parents are used for crossover selection. When True, the LLM considers all provided parents to select from a broader range of mutations. When set to False, only two parents are selected from the available options, allowing a more focused crossover. Adjusting this setting can be useful for testing different crossover strategies or limiting computational resources.

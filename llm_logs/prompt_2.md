@@ -57,20 +57,20 @@ grow         g[-65535, 65535][0]
 and these are the available parents each with his fitness. The lowest fitness the better the parent.
 Available parents:
  Parent 1:
- with fitness 12.942
-Parent 1 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 4067)", "ParamSetting(('minisat_simplified.params', 'param', 'var-decay'), 0.6097317004982488)"]
+ with fitness 11.6565
+Parent 1 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)"]
  Parent 2:
- with fitness 11.1468
-Parent 2 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'elim'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 50010)", "ParamSetting(('minisat_simplified.params', 'param', 'var-decay'), 0.8776575916340875)"]
+ with fitness 7.8638
+Parent 2 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')"]
  Parent 3:
- with fitness 5.4441
-Parent 3 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 3794)"]
+ with fitness 2.1196
+Parent 3 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 7855.70178273855)"]
  Parent 4:
- with fitness 10.7052
-Parent 4 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'elim'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
+ with fitness 9.0911
+Parent 4 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), -4504)"]
  Parent 5:
- with fitness 11.5134
-Parent 5 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
+ with fitness 12.087
+Parent 5 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)"]
 
 
 Remember you are assisting in the crossover between the parents. Choose as many and whichever edits from the available parents you think will lead to the best child. The proposed edits must be a combination of the available edits. Respond back with the child in the form of a list of edits in the same format as the parents are.

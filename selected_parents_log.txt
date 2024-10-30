@@ -51,107 +51,65 @@ grow         g[-65535, 65535][0]
 
 -----
 Generation 1, Parent 1:
-Fitness: 13.9455
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), 1466)"]
+Fitness: 14.2779
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)"]
 -----
 Generation 1, Parent 2:
-Fitness: 9.8655
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)"]
+Fitness: 11.0116
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')"]
 -----
 Generation 1, Parent 3:
-Fitness: 11.4464
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
+Fitness: 11.4431
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)"]
 -----
 Generation 1, Parent 4:
-Fitness: 9.6196
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)"]
+Fitness: 2.0954
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
 -----
 Generation 1, Parent 5:
-Fitness: 11.5604
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'simp-gc-frac'), 36023786.6088152)"]
+Fitness: 2.0978
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), 1466)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)"]
+Response: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
 Generation 2, Parent 1:
-Fitness: 11.4464
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
+Fitness: 2.4083
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
 -----
 Generation 2, Parent 2:
-Fitness: 9.6017
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)"]
+Fitness: 2.0978
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
 -----
 Generation 2, Parent 3:
-Fitness: 9.9344
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)"]
+Fitness: 2.7699
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 9879)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
 -----
 Generation 2, Parent 4:
-Fitness: 9.925
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 24524)"]
+Fitness: 7.7186
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')"]
 -----
 Generation 2, Parent 5:
-Fitness: 13.4887
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), 1466)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)"]
+Fitness: 11.0116
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
+Response: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
 Generation 3, Parent 1:
-Fitness: 11.4464
-Edits: []
+Fitness: 7.7186
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
 -----
 Generation 3, Parent 2:
-Fitness: 11.4237
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1708587919)"]
+Fitness: 2.0978
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
 -----
 Generation 3, Parent 3:
-Fitness: 9.6017
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)"]
+Fitness: 2.0954
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
 -----
 Generation 3, Parent 4:
-Fitness: 10.5343
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)"]
+Fitness: 2.5632
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
 -----
 Generation 3, Parent 5:
-Fitness: 11.5604
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'simp-gc-frac'), 36023786.6088152)"]
+Fitness: 2.3109
+Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'simp-gc-frac'), 36023786.6088152)"]
-Generation 4, Parent 1:
-Fitness: 10.5466
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)"]
------
-Generation 4, Parent 2:
-Fitness: 10.5343
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)"]
------
-Generation 4, Parent 3:
-Fitness: 11.631
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)"]
------
-Generation 4, Parent 4:
-Fitness: 9.2578
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'gc-frac'), 17546.957844035678)"]
------
-Generation 4, Parent 5:
-Fitness: 9.129
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
------
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
-Generation 5, Parent 1:
-Fitness: 10.5343
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 1)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
------
-Generation 5, Parent 2:
-Fitness: 9.2479
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'simp-gc-frac'), 36023786.6088152)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)"]
------
-Generation 5, Parent 3:
-Fitness: 9.129
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
------
-Generation 5, Parent 4:
-Fitness: 9.2478
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'simp-gc-frac'), 36023786.6088152)", "ParamSetting(('minisat_simplified.params', 'param', 'elim'), 'True')"]
------
-Generation 5, Parent 5:
-Fitness: 9.9344
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)"]
------
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 0)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1223928465)", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 28527)", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 102)", "ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')"]
+Response: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]

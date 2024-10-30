@@ -5,12 +5,12 @@ import ast
 
 # This script's responsible for executing small code snippets and determining the resulting program state based on the provided initial state and program code. It is the general script for a simple program statement (not loops or ifs, try etc)
 PROMPT1 = """
-You have been assigned the role of crossover assistant during genetic programming. You are assisting in the crossover between multiple parents. The goal is to create a child program that is a combination of the multiple parents. The parents are represented as a series of edits. The source file (code program or parameter file)  you are working on is presented below to give you context.
-Your task is to select from the available parents the edits you think are the more beneficial to create a child program. The child program must be a combination of the edits from the available parents. The child must be a combination of the available edits. Your response must adhere to the text format: Child: ***the child***.
+You have been assigned the role of crossover assistant during genetic programming. You are assisting in the crossover between 2 parents. The goal is to create a child program that is a combination of the 2 parents. You are given multiple possible parents, which are represented as a series of edits. The source file (code program or parameter file)  you are working on is presented below to give you context.
+Your task is to select from the available parents, 2 to use as your parents and then from those 2 parents, select the edits you think are the more beneficial to create a child program. The child program must be a combination of the edits from the 2 selected parents. The child must be a combination of the available edits from the 2 selected parents. Your response must adhere to the text format: Child: ***the child***.
 
 The source file:
 {program}
-and these are the available parents each with his fitness. The lowest fitness the better the parent.
+and these are the available parents each with thrie fitness. The lowest fitness the better the parent.
 Available parents:
 {parents}
 """
@@ -25,31 +25,6 @@ Your response must adhere to the text format: Child: ***the child***.
 """
 
 
-# Extracts the postcondition from the model's response
-import re
-
-def extract_postcondition(s: str) -> str:
-    pattern = r"Postcondition:\s*\*\*(.*?)\*\*"
-    matches = re.findall(pattern, s, re.DOTALL)
-    if matches:
-        # Select the last match
-        res = matches[-1]
-        # Clean up the beginning and end of the string for any weird characters like * or newlines
-        return res.strip()
-    return s
-
-
-# Extracts the result from the model's response given a keyword . For example the keyword can be "Output State"
-# Same as extact_postcondition if the keyword is "Postcondition"
-def extract_result(s: str, keyword: str) -> str:
-    pattern = fr"{keyword}:\s*\*\*(.*?)\*\*"
-    matches = re.findall(pattern, s, re.DOTALL)
-    if matches:
-        # Select the last match
-        res = matches[-1]
-        # Clean up the beginning and end of the string for any weird characters like * or newlines
-        return res.strip()
-    return s
 
 def extract_edits(edits_llm: str):
     if '***' in edits_llm:
@@ -69,7 +44,7 @@ def extract_edits(edits_llm: str):
 
 
 # This is the main function, it completes the prompt, queries the model and extracts the result, meaining the output state of that program part
-def llm_crossover(parents, program, model, documentation=None):
+def llm_crossover_2parents(parents, program, model, documentation=None):
     prompt = PROMPT1.format(parents=parents, program=program)
     if documentation:
         prompt += PROMPT2.format(documentation=documentation)

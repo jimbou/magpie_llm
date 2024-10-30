@@ -13,6 +13,8 @@ output_encoding = 'ascii'
 edit_retries = 10
 default_timeout = 30
 default_lengthout = 1e4 # 1e6 bytes is 1Mb
+llm_multiple_parents = False
+llm_documentation_path = '' 
 
 color_output = True
 log_format_info = '{counter:<7} {status:<20} {best}{fitness} ({ratio}) [{size}] {cached} {log}'

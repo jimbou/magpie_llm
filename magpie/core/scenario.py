@@ -101,6 +101,8 @@ number: literal_number""",
         'batch_shuffle': True,
         'batch_bin_shuffle': False,
         'batch_sample_size': 1,
+        'llm_multiple_parents' : True,
+        'llm_documentation_path' : "",
     },
 
     # [search.ls] section

@@ -44,6 +44,8 @@ def setup(config):
     magpie.settings.default_timeout = float(sec['default_timeout'])
     magpie.settings.default_lengthout = int(float(sec['default_lengthout']))
     magpie.settings.diff_method = sec['diff_method']
+    magpie.settings.llm_multiple_parents = config['search']['llm_multiple_parents']
+    magpie.settings.llm_documentation_path = config['search']['llm_documentation_path']
     val = sec['trust_local_filesystem'].lower()
     if val in ['true', 't', '1']:
         magpie.settings.trust_local_filesystem = True

@@ -99,7 +99,7 @@ class Model(ABC):
                 except Exception as e:
                     print(f"Error creating directory {response_dir}: {e}")
             #if the files exist add a counter to the name
-            if os.path.exists(prompt_file):
+            while os.path.exists(prompt_file):
                 self.log_counter += 1
                 prompt_file = f"{self.log_directory}/prompt_{self.log_counter}.md"
                 response_file = f"{self.log_directory}/response_{self.log_counter}.md"

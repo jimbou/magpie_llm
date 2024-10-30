@@ -57,20 +57,20 @@ grow         g[-65535, 65535][0]
 and these are the available parents each with his fitness. The lowest fitness the better the parent.
 Available parents:
  Parent 1:
- with fitness 12.942
-Parent 1 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 4067)", "ParamSetting(('minisat_simplified.params', 'param', 'var-decay'), 0.6097317004982488)"]
+ with fitness 8.9881
+Parent 1 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'var-decay'), 0.9683065856588761)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-seed'), 1146101159)"]
  Parent 2:
- with fitness 11.1468
-Parent 2 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'elim'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'sub-lim'), 50010)", "ParamSetting(('minisat_simplified.params', 'param', 'var-decay'), 0.8776575916340875)"]
+ with fitness 9.0911
+Parent 2 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), -4504)", "ParamSetting(('minisat_simplified.params', 'param', 'rcheck'), 'False')"]
  Parent 3:
- with fitness 5.4441
-Parent 3 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 3794)"]
+ with fitness 9.1401
+Parent 3 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'grow'), -4504)", "ParamSetting(('minisat_simplified.params', 'param', 'cl-lim'), 49656)"]
  Parent 4:
- with fitness 10.7052
-Parent 4 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'elim'), 'False')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
+ with fitness 2.1196
+Parent 4 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 7855.70178273855)"]
  Parent 5:
- with fitness 11.5134
-Parent 5 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
+ with fitness 1.91
+Parent 5 edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 7855.70178273855)", "ParamSetting(('minisat_simplified.params', 'param', 'grow'), -4504)"]
 
 
 Remember you are assisting in the crossover between the parents. Choose as many and whichever edits from the available parents you think will lead to the best child. The proposed edits must be a combination of the available edits. Respond back with the child in the form of a list of edits in the same format as the parents are.
