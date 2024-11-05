@@ -60,8 +60,7 @@ def extract_edits(edits_llm: str):
     if '[' in edits_llm:
         #remove everything before the first '[' and after the last ']'
         edits_llm = edits_llm[edits_llm.find('['):edits_llm.rfind(']')+1]
-        # Format with brackets, we can parse directly as a list
-        edit_strings = ast.literal_eval(edits_llm.replace('Child: ', ''))
+        return ast.literal_eval(edits_llm)
     else:
         # Format with hyphens, need to split by lines and remove hyphens
         edit_lines = edits_llm.replace("Child:", "").strip().splitlines()

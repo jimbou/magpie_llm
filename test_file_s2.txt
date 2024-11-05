@@ -192,7 +192,7 @@ void Solver::detachClause(CRef cr, bool strict) {
     }else{
         // Lazy detaching: (NOTE! Must clean all watcher lists before garbage collecting this clause)
         watches.smudge(~c[0]);
-        watches.smudge(~c[1]);
+        
     }
 
     if (c.learnt()) /*auto*/{
@@ -864,11 +864,9 @@ lbool Solver::solve_()
 {
     model.clear();
     conflict.clear();
-    if (learnts.size()-nAssigns() >= max_learnts)
-        // Reduce the set of learnt clauses:
-        /*auto*/{
-            reduceDB();
-        }/*auto*/
+    if (!ok) /*auto*/{
+      return l_False;
+    }/*auto*/
 
     solves++;
 

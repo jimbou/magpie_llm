@@ -6,7 +6,7 @@ import magpie.settings
 import magpie.core
 import magpie.utils
 import os
-
+import re
 from .model import get_model
 from .llm_call import llm_crossover
 from.llm_call_2parents import llm_crossover_2parents
@@ -259,36 +259,44 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                         #print the response in the file
                         file.write(f"Response: {response}\n")  
 
-                        #Convert each parsed edit string to an Edit object
-                        new_edits = []
-                        for edit_str in response:
-                            # Extract the class name and arguments using eval on the inner content
-                            class_name, args_str = edit_str.split("(", 1)
-                            edit_class = magpie.utils.edit_from_string(class_name)
-                            args = ast.literal_eval(f"({args_str[:-1]})")  # safely parse arguments
+                        
+                            
+                           
 
-                            # Create the Edit object and add to new_edits
-                            new_edits.append(edit_class(*args))
+                        edits_from_response = self.create_edits_from_llm_response(response)
+                        print(f"we got back the edits {edits_from_response}")
+                        #Convert each parsed edit string to an Edit object
+                        # new_edits = []
+                        # for edit_str in response:
+                        #     print("Edit string: ", edit_str)
+                        #     # Extract the class name and arguments using eval on the inner content
+                        #     class_name, args_str = edit_str.split("(", 1)
+                        #     edit_class = magpie.utils.edit_from_string(class_name)
+                        #     args = ast.literal_eval(f"({args_str[:-1]})")  # safely parse arguments
+
+                        #     # Create the Edit object and add to new_edits
+                        #     new_edits.append(edit_class(*args))
                         sol = copy.deepcopy(random.sample(selected_parents, 1)[0])
                 
                         #print the new edits not as objects but with their content      
                         # Convert each edit to its string representation
-                        edits_pretty_str = [str(edit) for edit in new_edits] 
+                        edits_pretty_str = [str(edit) for edit in edits_from_response] 
                         print("New edits: ", edits_pretty_str)
                         # Replace the parent's edits with the new ones
-                        sol.edits = new_edits  # Assuming `edits` is the attribute holding edit objects
+                        sol.edits = edits_from_response  # Assuming `edits` is the attribute holding edit objects
 
                         #i want to check if the solution is viable
-                        try:
-                            variant = magpie.core.Variant(self.software, magpie.core.Patch(edits=new_edits))
-                            offsprings.append(sol)
-                            print("Solution viable at try number: ", tries)
-                            tries+=1
-                        except:
-                            print("Solution not viable try again with try number: ", tries) 
-                            print(f"the edits are {edits_pretty_str}")
-                            tries+=1
-                            continue    
+                    
+                        variant = magpie.core.Variant(self.software, magpie.core.Patch(edits=edits_from_response))
+                        offsprings.append(sol)
+                        print("Solution viable at try number: ", tries)
+                        tries+=1
+                    # except Exception as e:
+                        #     print("Solution not viable try again with try number: ", tries) 
+                        #     print(f"the edits are {response}")
+                        #     print(f"the error is {e}")
+                        #     tries+=1
+                        #     continue    
                         
 
                 # crossover
@@ -366,6 +374,40 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
             for a in self.config['batch_bins']:
                 random.shuffle(a)
             self.hook_reset_batch()
+
+    def create_edits_from_llm_response(self,response, variant=None):
+    
+        ref = variant or self.software.noop_variant
+        edits = []
+        print(f"the response is {response}")
+        for edit_str in response:
+            # Parse the edit type and arguments
+            print(f"current edit string is {edit_str}")
+            match = re.match(r"(\w+)\((.*)\)", edit_str)
+            if not match:
+                print(f"Error: Could not parse edit string '{edit_str}'")
+                continue
+
+            edit_type, args_str = match.groups()
+
+            # Find the class in possible edits
+            klass = next((cls for cls in self.config['possible_edits'] if cls.__name__ == edit_type), None)
+            if klass is None:
+                print(f"Error: Edit type '{edit_type}' not found in possible edits.")
+                continue
+
+            # Create the Edit object with parsed target and additional args
+            args = ast.literal_eval(f"({args_str})")
+            target = args[0]  # Assuming the first argument is always the target
+            additional_args = args[1:]
+
+            # Direct instantiation instead of auto_create if arguments are sufficient
+            edit_obj = klass(target, *additional_args)
+            edits.append(edit_obj)
+            print(f"Edit object created: {edit_obj}")
+        
+        return edits
+
 
 
 class GeneticProgrammingConcat(GeneticProgramming):
