@@ -58,6 +58,8 @@ def extract_edits(edits_llm: str):
         edits_llm = edits_llm.replace('***', '')
 
     if '[' in edits_llm:
+        #remove everything before the first '[' and after the last ']'
+        edits_llm = edits_llm[edits_llm.find('['):edits_llm.rfind(']')+1]
         # Format with brackets, we can parse directly as a list
         edit_strings = ast.literal_eval(edits_llm.replace('Child: ', ''))
     else:

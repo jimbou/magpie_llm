@@ -67,11 +67,33 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
             # initial pop
             pop = {}
             local_best_fitness = None
+            #read the contents of the file we are chnaging as they are stored in original_program.target_files
+            target_file_contents = {}
 
+            
            
             # Write the original program to the file
            
             original_program = self.software
+            
+            for target_file in original_program.target_files:
+                try:
+                    #keep only the last file in the path of target_file
+                    target_file = target_file.split("/")[-1]
+                    original_program_path =  original_program.config['software']['path']+"/"+target_file
+                    with open(original_program_path, 'r') as file:
+                        contents = file.read()
+                        target_file_contents[target_file] = contents  # Store contents with the file path as the key
+                        # print(f"Contents of {target_file}:\n{contents}\n")
+                except FileNotFoundError:
+                    print(f"Error: {original_program_path} does not exist.")
+                except Exception as e:
+                    print(f"Error reading {target_file}: {e}")
+
+            # tranform target_file_contents to string
+            target_file_contents_str = ""
+            for target_file, contents in target_file_contents.items():
+                target_file_contents_str += f"{contents}\n"
 
             # Collect information from the BasicSoftware instance
             original_program_info = f"Path: {original_program.config['software']['path']}\n"
@@ -158,51 +180,82 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                 self.stats['gen'] += 1
                 self.hook_main_loop()
                 offsprings = []
+                tries=0 #num of llm calls
                 parents = self.select(pop)
                 # elitism
                 copy_parents = copy.deepcopy(parents)
+                #sort the parents by fitness
+                copy_parents = sorted(copy_parents, key=lambda sol: pop[sol].fitness)
+        
                 k = int(self.config['pop_size']*self.config['offspring_elitism'])
-                for parent in copy_parents[:k]:
-                    offsprings.append(parent)
+                print(f"k is {k}")
+                print(f"pop size is {self.config['pop_size']}")
+                offsprings_from_crossover =self.config['pop_size'] *self.config['offspring_crossover']
+                # for parent in copy_parents[:k]:
+                #     offsprings.append(parent)
 
                 #llm 
                 # Open the file to log selected parents and their fitness
                # Open the file to log selected parents and their fitness
                 parents_string =""
+                
                 with open("selected_parents_log.txt", "a") as file:
-                    for parent in copy_parents[:k]:
-                        # Select 5 random parents from the top K
-                        selected_parents = random.sample(copy_parents, 5)
 
+                    while len(offsprings) < offsprings_from_crossover and tries < self.config['pop_size']:
+                        parents_string =""
+                        #get the k best parents from the population or if parents less than k get them all
+                        if len(copy_parents) > k:
+                            print(f"i am selecting the best {k} parents")
+                            best_parents = copy_parents[:k]
+                        else:
+                            best_parents = copy_parents
+
+
+                        
+                            # Select 5 random parents from the top K
+                            #if K larger than 5 select 5 parents
+                        if len(best_parents) > 5:
+                            print("Selecting 5 random parents from the top 5")
+                            selected_parents = random.sample(best_parents, 5)
+                        else:
+                            selected_parents = best_parents
+
+                        print("Selected parents: ", selected_parents)
+                        print("all parents: ", copy_parents)
+
+                        #crossover until you get 
                         # Log each selected parent to the file
-                        for i, selected_parent in enumerate(selected_parents):
-                            variant = magpie.core.Variant(self.software, selected_parent)
+                        crossover_num =1
+                        for selected_parent in selected_parents:
+                            # variant = magpie.core.Variant(self.software, selected_parent)
                             fitness = pop[selected_parent].fitness
                             edits = selected_parent.edits  # Assuming edits is a list of Edit objects
 
                             # Convert each edit to its string representation
                             edits_str = [str(edit) for edit in edits]
-
+                            edits_count = len(edits)
                             # Write the parent and its fitness to the file
-                            file.write(f"Generation {self.stats['gen']}, Parent {i + 1}:\n")
-                            parents_string += f" Parent {i + 1}:\n with fitness {fitness}\n"
+                            file.write(f"Generation {self.stats['gen']}, Parent {crossover_num}:\n")
+                            parents_string += f" Parent {crossover_num}:\n with fitness {fitness}\n"
                             file.write(f"Fitness: {fitness}\n")
                             file.write(f"Edits: {edits_str}\n")
-                            parents_string += f"Parent {i+1} edits: {edits_str}\n"
+                            parents_string += f"Parent {crossover_num} has {edits_count} edits: {edits_str}\n"
                             file.write("-----\n")
-                        model = get_model("gpt-3.5-turbo-0125",0.7 ,"/home/jim/magpie_llm/llm_logs")
+                            crossover_num+=1
+
+                        model = get_model("gpt-4o",0.7 ,"llm_logs")
                         if self.config["llm_multiple_parents"]:
                             if self.config["llm_documentation_path"] != "":
                                 documentation = open(self.config["llm_documentation_path"], "r").read()
-                                response = llm_crossover(parents_string, original_program_info, model, documentation=documentation)
+                                response = llm_crossover(parents_string, target_file_contents_str, model, documentation=documentation)
                             else:
-                                response = llm_crossover(parents_string, original_program_info, model)
+                                response = llm_crossover(parents_string, target_file_contents_str, model)
                         else:   
                             if self.config["llm_documentation_path"] != "":
                                 documentation = open(self.config["llm_documentation_path"], "r").read()
-                                response = llm_crossover_2parents(parents_string, original_program_info, model, documentation=documentation)
+                                response = llm_crossover_2parents(parents_string, target_file_contents_str, model, documentation=documentation)
                             else:
-                                response = llm_crossover_2parents(parents_string, original_program_info, model)
+                                response = llm_crossover_2parents(parents_string, target_file_contents_str, model)
                         #print the response in the file
                         file.write(f"Response: {response}\n")  
 
@@ -216,25 +269,38 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
 
                             # Create the Edit object and add to new_edits
                             new_edits.append(edit_class(*args))
-                            sol = copy.deepcopy(random.sample(selected_parents, 1)[0])
+                        sol = copy.deepcopy(random.sample(selected_parents, 1)[0])
                 
                         #print the new edits not as objects but with their content      
                         # Convert each edit to its string representation
                         edits_pretty_str = [str(edit) for edit in new_edits] 
+                        print("New edits: ", edits_pretty_str)
                         # Replace the parent's edits with the new ones
                         sol.edits = new_edits  # Assuming `edits` is the attribute holding edit objects
-                        offsprings.append(sol)
+
+                        #i want to check if the solution is viable
+                        try:
+                            variant = magpie.core.Variant(self.software, magpie.core.Patch(edits=new_edits))
+                            offsprings.append(sol)
+                            print("Solution viable at try number: ", tries)
+                            tries+=1
+                        except:
+                            print("Solution not viable try again with try number: ", tries) 
+                            print(f"the edits are {edits_pretty_str}")
+                            tries+=1
+                            continue    
+                        
 
                 # crossover
-                copy_parents = copy.deepcopy(parents)
-                k = int(self.config['pop_size']*self.config['offspring_crossover'])
-                for parent in copy_parents[:k]:
-                    sol = copy.deepcopy(random.sample(parents, 1)[0])
-                    if random.random() > 0.5:
-                        sol = self.crossover(parent, sol)
-                    else:
-                        sol = self.crossover(sol, parent)
-                    offsprings.append(sol)
+                # copy_parents = copy.deepcopy(parents)
+                # k = int(self.config['pop_size']*self.config['offspring_crossover'])
+                # for parent in copy_parents[:k]:
+                #     sol = copy.deepcopy(random.sample(parents, 1)[0])
+                #     if random.random() > 0.5:
+                #         sol = self.crossover(parent, sol)
+                #     else:
+                #         sol = self.crossover(sol, parent)
+                #     offsprings.append(sol)
                 # mutation
                 copy_parents = copy.deepcopy(parents)
                 k = int(self.config['pop_size']*self.config['offspring_mutation'])

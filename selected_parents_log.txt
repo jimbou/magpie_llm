@@ -1,5 +1,5 @@
 Path: examples/minisat
-Target Files: minisat_simplified.params
+Target Files: core/Solver.cc.xml
 Model Rules:
   *.params: ParamFileConfigModel
   *.xml: SrcmlModel
@@ -10,106 +10,222 @@ Model Config:
 Fitness Type: time
 Init Command: bash init.sh, Timeout: 60.0
 Setup Command: bash compile.sh, Timeout: None
+Compile Command: bash compile.sh, Timeout: None
 Test Command: bash test.sh, Timeout: None
 Run Command: bash run_fixed.sh, Timeout: None
 Batch Fitness Strategy: sum
 Batch Bin Strategy: sum
 
 -----
-Contents of minisat_simplified.params:
------
-CLI_PREFIX = "-"
-CLI_GLUE = "="
-CLI_BOOLEAN = "prefix"
-
-# core
-luby      {True, False}[True]
-rnd-init  {True, False}[False]
-gc-frac   e(0, 65535)[0.2]
-rinc      e(1, 65535)[2]
-var-decay (0, 1)[0.95]
-cla-decay (0, 1)[0.999]
-rnd-freq  (0, 1)[0.0]
-rnd-seed  [0, 2147483647][91648253]
-
-phase-saving [0, 2][2]
-ccmin-mode   [0, 2][2]
-rfirst       g[1, 65535][100]
-
-# main
-pre  {True, False}[True]
-verb {0, 1, 2}[1]
-
-# simp
-rcheck       {True, False}[False]
-asymm        {True, False}[False]
-elim         {True, False}[True]
-simp-gc-frac e(0, 2147483647)[0.5]
-sub-lim      [-1, 65535][1000]     # <-- not ideal
-cl-lim       [-1, 65535][20]       # <-- not ideal
-grow         g[-65535, 65535][0]
-
+Error: core/Solver.cc.xml does not exist at path examples/minisat/core/Solver.cc.xml
 -----
 Generation 1, Parent 1:
-Fitness: 14.2779
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)"]
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
 -----
 Generation 1, Parent 2:
-Fitness: 11.0116
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')"]
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
 -----
 Generation 1, Parent 3:
-Fitness: 11.4431
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)"]
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
 -----
 Generation 1, Parent 4:
-Fitness: 2.0954
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
 -----
 Generation 1, Parent 5:
-Fitness: 2.0978
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
-Generation 2, Parent 1:
-Fitness: 2.4083
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'cla-decay'), 0.5948469103180166)", "ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
 -----
-Generation 2, Parent 2:
-Fitness: 2.0978
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
 -----
-Generation 2, Parent 3:
-Fitness: 2.7699
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rfirst'), 9879)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
 -----
-Generation 2, Parent 4:
-Fitness: 7.7186
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')"]
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
 -----
-Generation 2, Parent 5:
-Fitness: 11.0116
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')"]
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
-Generation 3, Parent 1:
-Fitness: 7.7186
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)"]
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
 -----
-Generation 3, Parent 2:
-Fitness: 2.0978
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)"]
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
 -----
-Generation 3, Parent 3:
-Fitness: 2.0954
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 1914.371200323189)"]
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
 -----
-Generation 3, Parent 4:
-Fitness: 2.5632
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'rnd-init'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'ccmin-mode'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
 -----
-Generation 3, Parent 5:
-Fitness: 2.3109
-Edits: ["ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
 -----
-Response: ["ParamSetting(('minisat_simplified.params', 'param', 'asymm'), 'True')", "ParamSetting(('minisat_simplified.params', 'param', 'phase-saving'), 2)", "ParamSetting(('minisat_simplified.params', 'param', 'rinc'), 6615.86118393073)", "ParamSetting(('minisat_simplified.params', 'param', 'luby'), 'False')"]
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+Generation 1, Parent 1:
+Fitness: 12.3911
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))"]
+-----
+Generation 1, Parent 2:
+Fitness: 12.4343
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))"]
+-----
+Generation 1, Parent 3:
+Fitness: 12.4798
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]
+-----
+Generation 1, Parent 4:
+Fitness: 21.3566
+Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 241), ('core/Solver.cc.xml', 'stmt', 308))"]
+-----
+Generation 1, Parent 5:
+Fitness: 21.4531
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 240))"]
+-----
+Response: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 341), ('core/Solver.cc.xml', 'stmt', 306))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 406), ('core/Solver.cc.xml', 'stmt', 409))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 170))"]

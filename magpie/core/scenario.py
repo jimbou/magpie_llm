@@ -118,7 +118,7 @@ number: literal_number""",
     'search.gp': {
         'pop_size': 10,
         'delete_prob': 0.5,
-        'offspring_elitism': 0.1,
+        'offspring_elitism': 0.5,
         'offspring_crossover': 0.5,
         'offspring_mutation': 0.4,
         'uniform_rate': 0.5, # GeneticProgrammingUniformConcat and GeneticProgrammingUniformInter only
