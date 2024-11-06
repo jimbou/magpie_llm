@@ -192,7 +192,7 @@ void Solver::detachClause(CRef cr, bool strict) {
     }else{
         // Lazy detaching: (NOTE! Must clean all watcher lists before garbage collecting this clause)
         watches.smudge(~c[0]);
-        
+        watches.smudge(~c[1]);
     }
 
     if (c.learnt()) /*auto*/{
@@ -474,7 +474,7 @@ void Solver::analyzeFinal(Lit p, vec<Lit>& out_conflict)
             return;
         }/*auto*/
 
-    seen[var(p)] = 1;
+    
 
     for (int i = trail.size()-1; i >= trail_lim[0]; i--){
         Var x = var(trail[i]);
@@ -738,7 +738,7 @@ lbool Solver::search(int nof_conflicts)
                 CRef cr = ca.alloc(learnt_clause, true);
                 learnts.push(cr);
                 attachClause(cr);
-                claBumpActivity(ca[cr]);
+                
                 uncheckedEnqueue(learnt_clause[0], cr);
             }
 

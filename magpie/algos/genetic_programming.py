@@ -7,6 +7,7 @@ import magpie.core
 import magpie.utils
 import os
 import re
+import math
 from .model import get_model
 from .llm_call import llm_crossover
 from.llm_call_2parents import llm_crossover_2parents
@@ -198,10 +199,12 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                 # Open the file to log selected parents and their fitness
                # Open the file to log selected parents and their fitness
                 parents_string =""
-                
+                #the maximum number of llm calls will be the min of either twice the number of chiodren we want to create from crossover or the number of combinations of parents
+                num_combinations = math.comb(len(copy_parents), 2)
+                max_tries = min(2*offsprings_from_crossover, num_combinations)
                 with open("selected_parents_log.txt", "a") as file:
 
-                    while len(offsprings) < offsprings_from_crossover and tries < self.config['pop_size']:
+                    while len(offsprings) < offsprings_from_crossover and tries < max_tries:
                         parents_string =""
                         #get the k best parents from the population or if parents less than k get them all
                         if len(copy_parents) > k:
@@ -226,13 +229,19 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                         #crossover until you get 
                         # Log each selected parent to the file
                         crossover_num =1
+                        edit_dict = {}
+
                         for selected_parent in selected_parents:
                             # variant = magpie.core.Variant(self.software, selected_parent)
                             fitness = pop[selected_parent].fitness
                             edits = selected_parent.edits  # Assuming edits is a list of Edit objects
 
+                            edits_str=[]
                             # Convert each edit to its string representation
-                            edits_str = [str(edit) for edit in edits]
+                            for edit in edits:
+                                edit_str = str(edit)
+                                edit_dict[edit_str] = edit 
+                                edits_str.append(edit_str)
                             edits_count = len(edits)
                             # Write the parent and its fitness to the file
                             file.write(f"Generation {self.stats['gen']}, Parent {crossover_num}:\n")
@@ -263,8 +272,24 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                             
                            
 
-                        edits_from_response = self.create_edits_from_llm_response(response)
-                        print(f"we got back the edits {edits_from_response}")
+                        new_edits = []
+                        missing_edit = False
+
+                        for edit_str in response:
+                            if edit_str in edit_dict:
+                                new_edits.append(edit_dict[edit_str])
+                            else:
+                                print(f"Warning: Edit '{edit_str}' not found in edit dictionary. Skipping this offspring.")
+                                missing_edit = True
+                                break
+
+                        # If any edit is missing, skip this offspring and continue to the next LLM call
+                        if missing_edit:
+                            tries+=1
+                            # Optionally log that we are skipping the creation of this offspring
+                            print(f"Skipping offspring creation due to missing edits in response.\n")
+                            continue  # Go to the next LLM call
+
                         #Convert each parsed edit string to an Edit object
                         # new_edits = []
                         # for edit_str in response:
@@ -276,27 +301,25 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
 
                         #     # Create the Edit object and add to new_edits
                         #     new_edits.append(edit_class(*args))
-                        sol = copy.deepcopy(random.sample(selected_parents, 1)[0])
-                
-                        #print the new edits not as objects but with their content      
-                        # Convert each edit to its string representation
-                        edits_pretty_str = [str(edit) for edit in edits_from_response] 
-                        print("New edits: ", edits_pretty_str)
-                        # Replace the parent's edits with the new ones
-                        sol.edits = edits_from_response  # Assuming `edits` is the attribute holding edit objects
+                        offspring = copy.deepcopy(random.sample(selected_parents, 1)[0])
+                        offspring.edits = new_edits  # Replace with LLM-selected edits
+                        # print("New edits assigned to offspring:", [str(edit) for edit in offspring.edits])
+
+                        # Add offspring to the population or any other desired processing
+                       
 
                         #i want to check if the solution is viable
-                    
-                        variant = magpie.core.Variant(self.software, magpie.core.Patch(edits=edits_from_response))
-                        offsprings.append(sol)
-                        print("Solution viable at try number: ", tries)
-                        tries+=1
-                    # except Exception as e:
-                        #     print("Solution not viable try again with try number: ", tries) 
-                        #     print(f"the edits are {response}")
-                        #     print(f"the error is {e}")
-                        #     tries+=1
-                        #     continue    
+                        try:
+                            variant = magpie.core.Variant(self.software, magpie.core.Patch(edits=new_edits))
+                            offsprings.append(offspring)
+                            print("Solution viable at try number: ", tries)
+                            tries+=1
+                        except Exception as e:
+                            print("Solution not viable try again with try number: ", tries) 
+                            print(f"the edits are {response}")
+                            print(f"the error is {e}")
+                            tries+=1
+                            continue    
                         
 
                 # crossover
