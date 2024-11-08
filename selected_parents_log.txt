@@ -20,251 +20,43 @@ Batch Bin Strategy: sum
 Error: core/Solver.cc.xml does not exist at path examples/minisat/core/Solver.cc.xml
 -----
 Generation 1, Parent 1:
-Fitness: 11.3833
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
+Fitness: 10.8571
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 69))"]
 -----
 Generation 1, Parent 2:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
+Fitness: 11.6396
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 385))"]
 -----
 Generation 1, Parent 3:
-Fitness: 11.4867
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 99), ('core/Solver.cc.xml', 'stmt', 306))"]
+Fitness: 11.6917
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 275), ('core/Solver.cc.xml', 'stmt', 231))"]
 -----
 Generation 1, Parent 4:
-Fitness: 11.5006
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 212), ('core/Solver.cc.xml', 'stmt', 274))"]
+Fitness: 11.6381
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 136))"]
 -----
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
+Generation 1, Parent 5:
+Fitness: 10.8227
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 246))"]
+-----
+Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 69))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 385))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 136))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 246))"]
 Generation 1, Parent 1:
-Fitness: 11.3833
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
+Fitness: 10.8227
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 246))"]
 -----
 Generation 1, Parent 2:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
+Fitness: 11.6396
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 385))"]
 -----
 Generation 1, Parent 3:
-Fitness: 11.4867
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 99), ('core/Solver.cc.xml', 'stmt', 306))"]
+Fitness: 11.6381
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 136))"]
 -----
 Generation 1, Parent 4:
-Fitness: 11.5006
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 212), ('core/Solver.cc.xml', 'stmt', 274))"]
+Fitness: 10.8571
+Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 69))"]
 -----
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 1, Parent 1:
-Fitness: 11.3833
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 1, Parent 2:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 1, Parent 3:
-Fitness: 11.4867
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 99), ('core/Solver.cc.xml', 'stmt', 306))"]
------
-Generation 1, Parent 4:
-Fitness: 11.5006
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 212), ('core/Solver.cc.xml', 'stmt', 274))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 1, Parent 1:
-Fitness: 11.3833
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 1, Parent 2:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 1, Parent 3:
-Fitness: 11.4867
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 99), ('core/Solver.cc.xml', 'stmt', 306))"]
------
-Generation 1, Parent 4:
-Fitness: 11.5006
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 212), ('core/Solver.cc.xml', 'stmt', 274))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 1, Parent 1:
-Fitness: 11.3833
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 1, Parent 2:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 1, Parent 3:
-Fitness: 11.4867
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 99), ('core/Solver.cc.xml', 'stmt', 306))"]
------
-Generation 1, Parent 4:
-Fitness: 11.5006
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 212), ('core/Solver.cc.xml', 'stmt', 274))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 2, Parent 1:
-Fitness: 11.3849
-Edits: []
------
-Generation 2, Parent 2:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 3, Parent 1:
-Fitness: 9.8637
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))"]
------
-Generation 3, Parent 2:
-Fitness: 11.3362
-Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 40), ('core/Solver.cc.xml', 'stmt', 37))"]
------
-Generation 3, Parent 3:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 3, Parent 4:
-Fitness: 11.49
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 249))"]
------
-Generation 3, Parent 5:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 3, Parent 1:
-Fitness: 9.8637
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))"]
------
-Generation 3, Parent 2:
-Fitness: 11.3362
-Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 40), ('core/Solver.cc.xml', 'stmt', 37))"]
------
-Generation 3, Parent 3:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 3, Parent 4:
-Fitness: 11.49
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 249))"]
------
-Generation 3, Parent 5:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
-Generation 3, Parent 1:
-Fitness: 9.8637
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))"]
------
-Generation 3, Parent 2:
-Fitness: 11.3362
-Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 40), ('core/Solver.cc.xml', 'stmt', 37))"]
------
-Generation 3, Parent 3:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 3, Parent 4:
-Fitness: 11.49
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 249))"]
------
-Generation 3, Parent 5:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 3, Parent 1:
-Fitness: 9.8637
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))"]
------
-Generation 3, Parent 2:
-Fitness: 11.3362
-Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 40), ('core/Solver.cc.xml', 'stmt', 37))"]
------
-Generation 3, Parent 3:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 3, Parent 4:
-Fitness: 11.49
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 249))"]
------
-Generation 3, Parent 5:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 3, Parent 1:
-Fitness: 9.8637
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))"]
------
-Generation 3, Parent 2:
-Fitness: 11.3362
-Edits: ["SrcmlStmtReplacement(('core/Solver.cc.xml', 'stmt', 40), ('core/Solver.cc.xml', 'stmt', 37))"]
------
-Generation 3, Parent 3:
-Fitness: 11.4214
-Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 3, Parent 4:
-Fitness: 11.49
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 249))"]
------
-Generation 3, Parent 5:
-Fitness: 11.4913
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 4, Parent 1:
-Fitness: 9.8221
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
------
-Generation 4, Parent 2:
-Fitness: 9.8358
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
-Generation 5, Parent 1:
-Fitness: 9.7219
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 5, Parent 2:
-Fitness: 9.8358
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 5, Parent 3:
-Fitness: 9.8453
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 79), ('core/Solver.cc.xml', 'stmt', 193))"]
------
-Generation 5, Parent 4:
-Fitness: 10.5602
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 198))"]
------
-Generation 5, Parent 5:
-Fitness: 11.3917
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 182))"]
------
-Response: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))"]
-Generation 5, Parent 1:
-Fitness: 9.7219
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 5, Parent 2:
-Fitness: 9.8358
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 174))"]
------
-Generation 5, Parent 3:
-Fitness: 9.8453
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 290))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 229), ('core/Solver.cc.xml', 'stmt', 134))", "SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 79), ('core/Solver.cc.xml', 'stmt', 193))"]
------
-Generation 5, Parent 4:
-Fitness: 10.5602
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 198))"]
------
-Generation 5, Parent 5:
-Fitness: 11.3917
-Edits: ["SrcmlStmtDeletion(('core/Solver.cc.xml', 'stmt', 182))"]
+Generation 1, Parent 5:
+Fitness: 11.6917
+Edits: ["SrcmlStmtInsertion(('core/Solver.cc.xml', '_inter_block', 275), ('core/Solver.cc.xml', 'stmt', 231))"]
 -----

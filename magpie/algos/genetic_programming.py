@@ -19,7 +19,7 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
         self.name = 'Genetic Programming'
         self.config['pop_size'] = 10
         self.config['delete_prob'] = 0.5
-        self.config['offspring_elitism'] = 0.5
+        self.config['offspring_elitism'] = 0.1
         self.config['offspring_crossover'] = 0.5
         self.config['offspring_mutation'] = 0.4
         self.config['batch_reset'] = True
@@ -95,6 +95,10 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
             target_file_contents_str = ""
             for target_file, contents in target_file_contents.items():
                 target_file_contents_str += f"{contents}\n"
+
+            if len(target_file_contents_str)> 1000: #too big of a file
+                target_file_contents_str = None
+            
 
             # Collect information from the BasicSoftware instance
             original_program_info = f"Path: {original_program.config['software']['path']}\n"
@@ -188,7 +192,14 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                 #sort the parents by fitness
                 copy_parents = sorted(copy_parents, key=lambda sol: pop[sol].fitness)
         
-                k = int(self.config['pop_size']*self.config['offspring_elitism'])
+                k1 = int(self.config['pop_size']*self.config['offspring_elitism'])
+                for parent in copy_parents[:k1]:
+                    offsprings.append(parent)
+                #take the best in the next generation
+                if k1< 5:
+                    k= 2*k1
+                else:
+                    k = 5
                 print(f"k is {k}")
                 print(f"pop size is {self.config['pop_size']}")
                 offsprings_from_crossover =self.config['pop_size'] *self.config['offspring_crossover']
@@ -252,8 +263,9 @@ class GeneticProgramming(magpie.core.BasicAlgorithm):
                             file.write("-----\n")
                             crossover_num+=1
 
-                        model = get_model("gpt-4o",0.7 ,"llm_logs")
+                        model = get_model("gpt-4o-mini-2024-07-18",0.7 ,"llm_logs")
                         if self.config["llm_multiple_parents"]:
+                        
                             if self.config["llm_documentation_path"] != "":
                                 documentation = open(self.config["llm_documentation_path"], "r").read()
                                 response = llm_crossover(parents_string, target_file_contents_str, model, documentation=documentation)
