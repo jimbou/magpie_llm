@@ -1,0 +1,1 @@
+Child: ["ParamSetting(('minisat_advanced.params', 'param', 'rnd-seed'), 1839926884)", "ParamSetting(('minisat_advanced.params', 'param', 'luby'), 0.14527247839132484)", "ParamSetting(('minisat_advanced.params', 'param', 'gc-frac'), 0.02428494934928562)"]

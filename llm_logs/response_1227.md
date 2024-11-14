@@ -1,0 +1,1 @@
+Child: ["ParamSetting(('minisat_advanced.params', 'param', 'luby'), 0.14527247839132484)", "ParamSetting(('minisat_advanced.params', 'param', 'elim'), 'True')", "ParamSetting(('minisat_advanced.params', 'param', 'gc-frac'), 0.04049653846004188)", "ParamSetting(('minisat_advanced.params', 'param', 'rcheck'), 'False')"]
